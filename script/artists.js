@@ -1,24 +1,25 @@
-// Pas besoin d'importer GSAP, il est déjà chargé via le CDN
 gsap.registerPlugin(ScrollTrigger);
 
+const sliderWidth = 256 + 64 * 2;
+
 gsap.to(".slider-right", {
-    x: 1200,
+    x: window.innerWidth - sliderWidth,
     ease: "none",
     scrollTrigger: {
-        trigger: ".slider-right",
-        start: "top center",
-        end: "top top",
+        trigger: ".section_artists",
+        start: "top 80%",
+        end: "center center",
         scrub: 1.5,
     },
 });
 
 gsap.to(".slider-left", {
-    x: -1200,
+    x: -(window.innerWidth - sliderWidth),
     ease: "none",
     scrollTrigger: {
-        trigger: ".slider-right",
-        start: "top center",
-        end: "top top",
+        trigger: ".section_artists",
+        start: "top 80%",
+        end: "center center",
         scrub: 1.5,
     },
 });

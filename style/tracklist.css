@@ -6,9 +6,27 @@
     align-items: center;
     height: 100vh;
     gap: 64px;
-    margin: 32px;
+    padding: 32px;
+    position: relative;
+    z-index: 1; /* Assure que le contenu est au-dessus */
+    overflow: hidden; /* Évite que le pseudo-élément dépasse */
+    color: white;
 }
 
+.section_tracklist::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/40.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scaleX(-1); /* Flip horizontal à 180° */
+    z-index: -1; /* Place derrière le contenu */
+}
 .vinyle {
     position: relative;
     display: flex;
@@ -66,6 +84,7 @@
     top: 0;
     right: 0;
     width: 30%;
+    max-width: 256px;
     animation: rotate 30s linear infinite;
 }
 
@@ -124,6 +143,7 @@
     width: 100%;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
     padding: 8px 24px;
+    background-color: white;
 }
 
 .play-btn {

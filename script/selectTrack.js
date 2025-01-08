@@ -126,6 +126,7 @@ function stopTrack() {
     playBtn.classList.remove('pause');
     bars.forEach(bar => bar.style.animationPlayState = 'paused');
     isPlaying = false;
+    pauseVisualizer = true;
 }
 
 updateTrack(0)

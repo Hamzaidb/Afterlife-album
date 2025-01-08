@@ -17,10 +17,12 @@ playBtn.addEventListener('click', () => {
         audio.pause();
         playBtn.classList.remove('pause');
         bars.forEach(bar => bar.style.animationPlayState = 'paused');
+        pauseVisualizer = true;
     } else {
         audio.play();
         playBtn.classList.add('pause');
         bars.forEach(bar => bar.style.animationPlayState = 'running');
+        pauseVisualizer = false;
     }
     isPlaying = !isPlaying;
 });
