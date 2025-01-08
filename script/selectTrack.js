@@ -14,14 +14,42 @@ const tracksName = [
     "Serenity"
 ];
 
+const artists = [
+    "Anyma",
+    "Clara",
+    "Argy",
+    "Cassian",
+    "Olympe",
+    "Kevin de Vries",
+    "Charlotte"
+]
+
+const styles = [
+    "Melodic House/Techno",
+    "Progressive House",
+    "Deep House",
+    "Techno",
+    "Electronica",
+    "Minimal",
+    "Tech House"
+]
+
 
 const tracklist = [];
 for (let i = 1; i <= 12; i++) {
+    const artist = artists[Math.floor(Math.random() * artists.length)];
+    let featuredArtist = artists[Math.floor(Math.random() * artists.length)];
+
+    while (featuredArtist === artist) {
+        featuredArtist = artists[Math.floor(Math.random() * artists.length)];
+    }
+
     const track = {
         title: tracksName[i],
         duration: `${Math.floor(Math.random() * 4) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
         file: `../music/Eternity.mp3`,
-        style: "Melodic House/Techno",
+        style: styles[Math.floor(Math.random() * styles.length)],
+        artists: Math.random() < 0.3 ? `${artist} feat. ${featuredArtist}` : artist
     };
     tracklist.push(track);
 }
@@ -34,6 +62,7 @@ const audiotrack = document.getElementById("audio");
 const trackTitle = document.getElementById("track-title");
 const trackTime = document.getElementById("track-time");
 const trackStyle = document.getElementById("track-style");
+const trackArtist = document.getElementById("track-artist");
 
 let isDragging = false;
 let startY;
@@ -88,6 +117,7 @@ function updateTrack(currentTrackIndex) {
     trackTitle.textContent = `${currentTrackIndex + 1} - ${track.title}`;
     trackTime.textContent = `Time : ${track.duration}`;
     trackStyle.textContent = track.style;
+    trackArtist.textContent = track.artists;
 
     audiotrack.src = track.file;
 }
