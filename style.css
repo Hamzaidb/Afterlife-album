@@ -58,6 +58,65 @@ button:hover {
     background-color: #555;
 }
 
+/* Ajoutez un conteneur principal qui contient le canevas et le panneau */
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligne les éléments en haut */
+    height: 100vh; /* Utilise la hauteur de l'écran */
+    flex-wrap: wrap; /* Permet de passer à la ligne en mode mobile */
+    position: relative;
+}
+
+#canvas-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 2.0); /* Ombre douce sous le canvas */
+    border-radius: 10px;
+}
+
+#cover-header {
+    display: flex;
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    height: 15vh; /* Prend la hauteur totale de la fenêtre */
+    text-align: center; /* Centre le texte à l'intérieur */
+}
+
+
+#config-panel {
+    flex: 1 1 40%; /* Prend 40% de l'espace disponible */
+    padding: 20px;
+    position: relative;
+    max-width: 300px; /* Limite la largeur du panneau */
+}
+
+#canvas-container2 img {
+    width: 100%;
+    height: auto;
+    max-width: 500px; /* Ajuste la taille maximale du logo */
+}
+
+/* Médias queries pour les ajustements en mode mobile */
+@media (max-width: 768px) {
+    #main-container {
+        flex-direction: column; /* Change l'orientation en colonne */
+        justify-content: flex-start;
+    }
+
+    #config-panel {
+        width: 100%; /* Le panneau prend toute la largeur */
+        order: 1; /* Place le panneau en bas du canevas */
+    }
+
+    #canvas-container2 {
+        width: 100%; /* Le canevas prend toute la largeur */
+        order: 0; /* Le canevas reste en haut */
+    }
+}
+
 
 
 

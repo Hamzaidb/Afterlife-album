@@ -8,10 +8,8 @@
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 
-    <script src="./script/canvas-choice.js" defer></script>
     <script src="./script/header-animation.js" defer></script>
-    <script src="./script/cover-canvas.js" defer></script>
-    <script src="./script/ondulation.js" defer></script>
+    
   
 </head>
 <body class="">
@@ -31,51 +29,42 @@
             <canvas id="canvas-header"></canvas>
         </div>
     </section>
-    <section>
-        <div>
-            <h1>AFTERLIFE</h1>
-        </div>
-    </section>
-    <section> 
-
-
-    <!-- Paramètres si 1er canva est choisi -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button id="btn1">Image 1</button>
-        <button id="btn2">Image 2</button>
-        <button id="btn3">Image 3</button>
-        <button id="kaleidoscope-btn">Mode Kaléidoscope</button>
-    </div>
-    
-    
-        <div class="input-range">
-            <div>
-                <label for="width-slider">Largeur max:</label>
-                <input type="range" id="width-slider" min="20" max="300" value="100">
-            </div>
-            <div>
-                <label for="height-slider">Hauteur max:</label>
-                <input type="range" id="height-slider" min="20" max="300" value="100">
-            </div>
-            <div>
-                <label for="bg-color-slider">Luminosité du fond:</label>
-                <input type="range" id="bg-color-slider" min="0" max="1" step="0.01" value="0">
-            </div>
-        </div>
-
-       
+  
         
-        <!-- container pour les deux canvas-->
-        <div id="canvas-container2" style="position: relative;">
-            <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
-            <!-- <canvas id="canvas2"></canvas>-->
+    <div id="cover-header">
+            <h1>COVER</h1>
         </div>
+
+        <div id="main-container">
+            
+            <div id="canvas-container2">
+                <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
+            </div>
+        
+            <div id="config-panel">
+                <label for="minYchange">Min Y Change: </label>
+                <input type="range" id="minYchange" min="0" max="100" step="1" value="0">
+                <span id="minYchangeValue">0</span><br>
+        
+                <label for="maxYchange">Max Y Change: </label>
+                <input type="range" id="maxYchange" min="0" max="100" step="1" value="50">
+                <span id="maxYchangeValue">50</span><br>
+        
+                <label for="layers">Layers: </label>
+                <input type="number" id="layers" min="1" max="20" value="8"><br>
+        
+                <label for="rotStripe">Rotation Stripe: </label>
+                <input type="range" id="rotStripe" min="0" max="10" step="1" value="0"><br>
+            </div>
+        </div>
+        
       
        
     </section>
     
     
 
+    <script src="./script/cover.js"></script>
 
 </body>
 </html>
