@@ -1,0 +1,50 @@
+.section_artists {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    overflow: hidden;
+    border-color: black;
+    border-width: 2px 0;
+    border-style: solid;
+    padding: 64px 0;
+    margin: 64px 0;
+}
+
+.section_artists h2{
+    text-transform: uppercase;
+    font-size: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-wrap: nowrap;
+    font-weight: 900;
+    mix-blend-mode: overlay;
+}
+
+.section_artists .slider {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 64px;
+    gap: 64px;
+    width: 100%;
+}
+
+.artists-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.slider-left{
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.slider img {
+    width: 256px;
+    aspect-ratio: 1/1;
+    flex-shrink: 0;
+    object-fit: cover;
+}

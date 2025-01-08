@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Excon-Light';
+  src: url('../fonts/Excon-Light.woff2') format('woff2'),
+       url('../fonts/Excon-Light.woff') format('woff');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Excon-Regular';
+  src: url('../fonts/Excon-Regular.woff2') format('woff2'),
+       url('../fonts/Excon-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Excon-Medium';
+  src: url('../fonts/Excon-Medium.woff2') format('woff2'),
+       url('../fonts/Excon-Medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Excon-Bold';
+  src: url('../fonts/Excon-Bold.woff2') format('woff2'),
+       url('../fonts/Excon-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
