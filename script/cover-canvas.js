@@ -1,58 +1,3 @@
-// fractale 
-
-let isFractalVisible = false;  // Contrôle l'affichage de la fractale
-
-// Fonction pour dessiner l'ensemble de Mandelbrot
-function drawMandelbrot() {
-  const maxIterations = 300; // Nombre d'itérations pour la fractale
-  const scale = 300; // Échelle de zoom de la fractale
-  const centerX = width / 2; // Position centrale X de la fractale
-  const centerY = height / 2; // Position centrale Y de la fractale
-
-  loadPixels();
-  for (let x = 0; x < width; x++) {
-    for (let y = 0; y < height; y++) {
-      let zx = 0;
-      let zy = 0;
-      let cX = (x - centerX) / scale;
-      let cY = (y - centerY) / scale;
-      let iteration = 0;
-
-      while (zx * zx + zy * zy < 4 && iteration < maxIterations) {
-        let temp = zx * zx - zy * zy + cX;
-        zy = 2 * zx * zy + cY;
-        zx = temp;
-        iteration++;
-      }
-
-      let colorValue = iteration === maxIterations ? 0 : map(iteration, 0, maxIterations, 0, 255);
-      set(x, y, color(colorValue));  // Applique la couleur au pixel
-    }
-  }
-  updatePixels();
-}
-
-// Fonction pour activer/désactiver la fractale
-function toggleFractal() {
-  isFractalVisible = !isFractalVisible;
-  if (isFractalVisible) {
-    drawMandelbrot();  // Dessiner la fractale
-  } else {
-    clear();  // Effacer le canvas
-  }
-}
-
-// Lorsqu'on clique sur le bouton, on active ou désactive la fractale
-document.getElementById("btn4").addEventListener("click", () => {
-  toggleFractal();  // Affiche ou masque la fractale
-});
-
-
-
-
-
-
-// animation 
 
 let img;
 let currentSrc = "https://images.squarespace-cdn.com/content/v1/6195288d4315b3125cd7af80/06a962ba-241c-4663-aa98-6a342e190980/AL047_UNITY_FINAL.jpg";
@@ -72,34 +17,14 @@ function updateImage(newSrc) {
     });
 }
 
+let isKaleidoscopeMode = false; // Mode kaléidoscope désactivé par défaut
 
-let maxWidth = 100; // Largeur maximale par défaut
-let maxHeight = 100; // Hauteur maximale par défaut
-
-document.getElementById("bg-color-slider").addEventListener("input", (event) => {
-  let hue = parseFloat(event.target.value); // Récupère la valeur du slider
-  background(hue, 1, 1); // Change le fond
-  console.log(`Couleur de fond mise à jour: teinte=${hue}`);
+// Fonction pour activer ou désactiver le mode kaléidoscope
+document.getElementById("kaleidoscope-btn").addEventListener("click", () => {
+  isKaleidoscopeMode = !isKaleidoscopeMode; // Bascule entre les deux états
+  console.log(`Mode kaléidoscope ${isKaleidoscopeMode ? 'activé' : 'désactivé'}`);
 });
 
-
-document.getElementById("width-slider").addEventListener("input", (event) => {
-    maxWidth = parseInt(event.target.value);
-    updateShapeDimensions();
-});
-
-document.getElementById("height-slider").addEventListener("input", (event) => {
-    maxHeight = parseInt(event.target.value);
-    updateShapeDimensions();
-});
-
-function updateShapeDimensions() {
-  for (let w of ws) {
-      w.w.setBounds(20, maxWidth); // Largeur dynamique
-      w.h.setBounds(20, maxHeight); // Hauteur dynamique
-  }
-  console.log(`Dimensions mises à jour: largeur max=${maxWidth}, hauteur max=${maxHeight}`);
-}
 
 
 
@@ -146,7 +71,6 @@ class Rect {
     this.h.update();
   }
 }
-
 class Wanderer {
   constructor(w, h) {
     this.x = random(width);
@@ -176,7 +100,37 @@ class Wanderer {
   render() {
     push();
     translate(this.x, this.y);
-    rotate(this.a.val);
+
+    // Si le mode kaléidoscope est activé
+    if (isKaleidoscopeMode) {
+      let numSlices = 6; // Nombre de "tranches" du kaléidoscope fractal
+      let angleStep = TWO_PI / numSlices;
+
+      // Créer l'effet fractal en appliquant une réduction progressive
+      let scaleFactor = 1;
+      let maxDepth = 6; // Profondeur des répétitions fractales
+      for (let i = 0; i < maxDepth; i++) {
+        push();
+        rotate(i * angleStep); // Appliquer la rotation à chaque tranche
+
+        // Appliquer une réduction de taille à chaque itération
+        let scaleAmount = pow(0.6, i); // La réduction de taille (diminue à chaque itération)
+        scale(scaleAmount);
+
+        this._drawImage(); // Dessiner l'image sur cette tranche
+
+        pop();
+      }
+    } else {
+      // Si le mode kaléidoscope est désactivé, dessiner l'image normalement
+      this._drawImage();
+    }
+
+    pop();
+  }
+
+  // Méthode pour dessiner l'image, appelée dans render()
+  _drawImage() {
     let v = createVector(cos(this.heading - this.a.val), sin(this.heading - this.a.val));
     if (v.dot(createVector(0, -1)) > 0)
       image(
@@ -202,9 +156,11 @@ class Wanderer {
         this.rect.w.val,
         1
       );
-    pop();
   }
 }
+
+
+
 let ws;
 let isAnimating = true; // Contrôle de l'état d'animation
 let stopTimeout; // Variable pour stocker le timeout
@@ -236,12 +192,9 @@ function init() {
 
 // Associer le slider de luminosité à la fonction de mise à jour
 document.getElementById("bg-color-slider").addEventListener("input", (event) => {
-  currentBackgroundBrightness = parseFloat(event.target.value); // Met à jour la luminosité
-  drawCanvasBackground(); // Redessine le fond avec la nouvelle luminosité
+ currentBackgroundBrightness = parseFloat(event.target.value); // Met à jour la luminosité
+ drawCanvasBackground(); // Redessine le fond avec la nouvelle luminosité
 });
-
-
-
 
 
 function draw() {

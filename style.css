@@ -8,14 +8,14 @@
 
 }
 
-#canvas1, #canvas2 {
+#canvas-header, #canvas2 {
     position: relative; /* Permet de les positionner dans le flux normal */
     background: black;
     height: 600px; /* Hauteur définie */
     display: block; /* Assure qu'ils occupent une nouvelle ligne */
 }
 
-#canvas1 {
+#canvas-header {
     width: 100%; /* Largeur 100% */
 }
 
@@ -30,7 +30,7 @@
     pointer-events: none; /* Permet de cliquer à travers le logo */
 }
 
-#canvas-container2 {
+#canvas-container2, #canvas-container3 {
     width: 600px;
     height: 600px;
     /* margin: auto; */

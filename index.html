@@ -6,12 +6,13 @@
     <title>header</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-    
-    <script src="header-animation.js" defer></script>
-    <script src="cover-canvas.js" defer></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 
+    <script src="./script/canvas-choice.js" defer></script>
+    <script src="./script/header-animation.js" defer></script>
+    <script src="./script/cover-canvas.js" defer></script>
+    <script src="./script/ondulation.js" defer></script>
+  
 </head>
 <body class="">
     <section>
@@ -27,7 +28,7 @@
 
     <section>
         <div id="canvas-container1">
-            <canvas id="canvas1"></canvas>
+            <canvas id="canvas-header"></canvas>
         </div>
     </section>
     <section>
@@ -36,12 +37,17 @@
         </div>
     </section>
     <section> 
-        <div style="text-align: center; margin-top: 20px;">
-            <button id="btn1">Image 1</button>
-            <button id="btn2">Image 2</button>
-            <button id="btn3">Image 3</button>
-            <button id="btn4">Image 4</button>
-        </div>
+
+
+    <!-- Paramètres si 1er canva est choisi -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="btn1">Image 1</button>
+        <button id="btn2">Image 2</button>
+        <button id="btn3">Image 3</button>
+        <button id="kaleidoscope-btn">Mode Kaléidoscope</button>
+    </div>
+    
+    
         <div class="input-range">
             <div>
                 <label for="width-slider">Largeur max:</label>
@@ -56,13 +62,15 @@
                 <input type="range" id="bg-color-slider" min="0" max="1" step="0.01" value="0">
             </div>
         </div>
-        
 
+       
         
+        <!-- container pour les deux canvas-->
         <div id="canvas-container2" style="position: relative;">
             <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
             <!-- <canvas id="canvas2"></canvas>-->
         </div>
+      
        
     </section>
     
