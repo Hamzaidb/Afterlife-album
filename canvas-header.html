@@ -7,7 +7,7 @@
     <title>header</title>
     <link href="style/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/tracklist.css" type="text/css">
-    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <!-- <link href="https://cdn.tailwindcss.com" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 
     <section class="section_tracklist">
         <div class="vinyle">
-            <img src="assets/vinyle.png" class="vinyle-img">
+            <img src="assets/vinyle.png" id="vinyle-img" draggable="false">
             <div class="turnText">
                 <span>Turn to<br>discover tracks</span>
                 <img src="assets/arrow.svg">
@@ -33,10 +33,10 @@
         </div>
         <div class="track-viewer">
             <div>
-                <h2>1 - Tracks name number 1</h2>
+                <h2 id="track-title">1 - Tracks name number 1</h2>
                 <div class="track-info">
-                    <span>Time : 3:24</span>
-                    <span>Melodic House/Techno</span>
+                    <span id="track-time">Time : 3:24</span>
+                    <span id="track-style">Melodic House/Techno</span>
                 </div>
                 <div class="viewer">
                     <div class="cover-viewer">
@@ -71,10 +71,12 @@
                     </div>
                 </div>
             </div>
+            <img src="assets/star.svg">
         </div>
-        <audio id="audio" src="music\Eternity.mp3"></audio>
+        <audio id="audio" src="music/Eternity.mp3"></audio>
     </section>
 
+    <script src="script/selectTrack.js"></script>
     <script src="script/musicPlayer.js"></script>
     <script src="script/header-animation.js"></script>
 </body>
