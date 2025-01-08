@@ -1,7 +1,63 @@
+// fractale 
+
+let isFractalVisible = false;  // Contrôle l'affichage de la fractale
+
+// Fonction pour dessiner l'ensemble de Mandelbrot
+function drawMandelbrot() {
+  const maxIterations = 300; // Nombre d'itérations pour la fractale
+  const scale = 300; // Échelle de zoom de la fractale
+  const centerX = width / 2; // Position centrale X de la fractale
+  const centerY = height / 2; // Position centrale Y de la fractale
+
+  loadPixels();
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      let zx = 0;
+      let zy = 0;
+      let cX = (x - centerX) / scale;
+      let cY = (y - centerY) / scale;
+      let iteration = 0;
+
+      while (zx * zx + zy * zy < 4 && iteration < maxIterations) {
+        let temp = zx * zx - zy * zy + cX;
+        zy = 2 * zx * zy + cY;
+        zx = temp;
+        iteration++;
+      }
+
+      let colorValue = iteration === maxIterations ? 0 : map(iteration, 0, maxIterations, 0, 255);
+      set(x, y, color(colorValue));  // Applique la couleur au pixel
+    }
+  }
+  updatePixels();
+}
+
+// Fonction pour activer/désactiver la fractale
+function toggleFractal() {
+  isFractalVisible = !isFractalVisible;
+  if (isFractalVisible) {
+    drawMandelbrot();  // Dessiner la fractale
+  } else {
+    clear();  // Effacer le canvas
+  }
+}
+
+// Lorsqu'on clique sur le bouton, on active ou désactive la fractale
+document.getElementById("btn4").addEventListener("click", () => {
+  toggleFractal();  // Affiche ou masque la fractale
+});
+
+
+
+
+
+
+// animation 
+
 let img;
-let currentSrc = "https://images.squarespace-cdn.com/content/v1/6195288d4315b3125cd7af80/c4dd9495-2f81-41b9-b976-9c1db6635351/AL51___FINAL_PLAIN.jpg";
+let currentSrc = "https://images.squarespace-cdn.com/content/v1/6195288d4315b3125cd7af80/06a962ba-241c-4663-aa98-6a342e190980/AL047_UNITY_FINAL.jpg";
 let src2 = "https://images.squarespace-cdn.com/content/v1/6195288d4315b3125cd7af80/511d579b-d512-40e7-96e7-ce68eeb3413c/AL48______FINAL.jpg";
-let src3 = "https://images.squarespace-cdn.com/content/v1/6195288d4315b3125cd7af80/8d692300-2dc6-4b45-9b38-493599f165f5/AL079-PACKSHOT.jpg";
+let src3 = "https://www.radiofrance.fr/s3/cruiser-production-eu3/2023/05/edca9878-f4a3-4994-8e7c-380a2ff73cf3/640x340_sc_gettyimages-1163560314-2.jpg";
 
 function preload() {
     img = loadImage(currentSrc);
@@ -15,6 +71,7 @@ function updateImage(newSrc) {
         redrawCanvas(); // Redessine le canvas
     });
 }
+
 
 let maxWidth = 100; // Largeur maximale par défaut
 let maxHeight = 100; // Hauteur maximale par défaut
@@ -152,6 +209,9 @@ let ws;
 let isAnimating = true; // Contrôle de l'état d'animation
 let stopTimeout; // Variable pour stocker le timeout
 
+let currentBackgroundBrightness = 0; 
+
+
 function setup() {
   let canvas = createCanvas(600, 600); // Définit la taille du canvas
   canvas.parent("canvas-container2"); // Associe ce canvas à l'élément HTML avec l'ID canvas-container2
@@ -159,6 +219,11 @@ function setup() {
   colorMode(HSB, 1, 1, 1);
   init();
   startAnimation();
+  drawCanvasBackground();
+}
+
+function drawCanvasBackground() {
+  background(0, 0, currentBackgroundBrightness); // Fond basé sur la luminosité
 }
 
 function init() {
@@ -168,6 +233,16 @@ function init() {
   }
   background(0);
 }
+
+// Associer le slider de luminosité à la fonction de mise à jour
+document.getElementById("bg-color-slider").addEventListener("input", (event) => {
+  currentBackgroundBrightness = parseFloat(event.target.value); // Met à jour la luminosité
+  drawCanvasBackground(); // Redessine le fond avec la nouvelle luminosité
+});
+
+
+
+
 
 function draw() {
   if (!isAnimating) return; // Ne dessine plus si l'animation est arrêtée
