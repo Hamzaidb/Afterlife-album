@@ -6,6 +6,12 @@
     <title>header</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    
+    <script src="header-animation.js" defer></script>
+    <script src="cover-canvas.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+
 </head>
 <body class="">
     <section>
@@ -18,8 +24,41 @@
         <h2>AFTERLIFE - 2025</h2>
         <img src="assets/afterlife_logo.png" class="center-img">
     </div>
-    <canvas id="canvas1"></canvas>
 
-<script src="header-animation.js"></script>
+    <section>
+        <div id="canvas-container1">
+            <canvas id="canvas1"></canvas>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h1>AFTERLIFE</h1>
+        </div>
+    </section>
+    <section> 
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="btn1">Image 1</button>
+            <button id="btn2">Image 2</button>
+            <button id="btn3">Image 3</button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <label for="width-slider">Largeur max:</label>
+            <input type="range" id="width-slider" min="20" max="300" value="100">
+            <label for="height-slider">Hauteur max:</label>
+            <input type="range" id="height-slider" min="20" max="300" value="100">
+                <input type="range" id="bg-color-slider" min="0" max="1" step="0.01">
+</div>
+
+        
+        <div id="canvas-container2" style="position: relative;">
+            <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
+            <!-- <canvas id="canvas2"></canvas>-->
+        </div>
+       
+    </section>
+    
+    
+
+
 </body>
 </html>
