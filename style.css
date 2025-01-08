@@ -79,11 +79,21 @@ button:hover {
 
 #cover-header {
     display: flex;
-    justify-content: center; /* Centrage horizontal */
-    align-items: center; /* Centrage vertical */
+    flex-direction: column; /* Empile les éléments verticalement */
+    justify-content: center; /* Centrage vertical */
+    align-items: center; /* Centrage horizontal */
     height: 15vh; /* Prend la hauteur totale de la fenêtre */
     text-align: center; /* Centre le texte à l'intérieur */
 }
+
+#cover-header h1 {
+    margin-bottom: 10px; /* Ajouter de l'espace sous le titre */
+}
+
+#cover-header p {
+    margin-top: 5px; /* Ajouter un léger espace au-dessus du paragraphe */
+}
+
 
 
 #config-panel {
