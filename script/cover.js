@@ -6,7 +6,7 @@ let src2 = "/assets/Afterlife_orange_grey.jpg";
 let src3 = "/assets/Afterlife_red.jpg";
 let src4 = "/assets/Afterlife_blue.jpg";
 let src5 = "/assets/Afterlife_grey.jpg";
-let src6 = "/assets/gradient.jpg";
+let src6 = "/assets/Afterlife_red_white.jpg";
 
 function preload() {
     img = loadImage(currentSrc);
