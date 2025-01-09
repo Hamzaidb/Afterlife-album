@@ -8,7 +8,12 @@
     font-family: Excon-Regular, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: Panchang-Bold, sans-serif;
 }
 /* Conteneur principal */
@@ -41,16 +46,24 @@ h1, h2, h3, h4, h5, h6 {
   }
   
 
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
 
-#canvas-header, #canvas2 {
-    position: relative; /* Permet de les positionner dans le flux normal */
+
+#canvas-header,
+#canvas2 {
+    position: relative;
     background: black;
-    height: 600px; /* Hauteur définie */
-    display: block; /* Assure qu'ils occupent une nouvelle ligne */
+    height: 600px;
+    display: block;
 }
 
 #canvas-header {
-    width: 100%; /* Largeur 100% */
+    width: 100%;
 }
 
 
@@ -59,15 +72,15 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px; /* Ajustez selon la taille désirée */
+    width: 400px;
     height: auto;
-    pointer-events: none; /* Permet de cliquer à travers le logo */
+    pointer-events: none;
 }
 
-#canvas-container2, #canvas-container3 {
+#canvas-container2,
+#canvas-container3 {
     width: 600px;
     height: 600px;
-    /* margin: auto; */
     position: relative;
 }
 
@@ -81,13 +94,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-/* Ajoutez un conteneur principal qui contient le canevas et le panneau */
 #main-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Aligne les éléments en haut */
-    height: 100vh; /* Utilise la hauteur de l'écran */
-    flex-wrap: wrap; /* Permet de passer à la ligne en mode mobile */
+    align-items: flex-start;
+    height: 100vh;
+    flex-wrap: wrap;
     position: relative;
 }
 
@@ -96,57 +108,50 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 2.0); /* Ombre douce sous le canvas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 2.0);
     border-radius: 10px;
 }
 
 #cover-header {
     display: flex;
-    flex-direction: column; /* Empile les éléments verticalement */
-    justify-content: center; /* Centrage vertical */
-    align-items: center; /* Centrage horizontal */
-    height: 15vh; /* Prend la hauteur totale de la fenêtre */
-    text-align: center; /* Centre le texte à l'intérieur */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    text-align: center;
 }
 
 #cover-header h1 {
-    margin-bottom: 10px; /* Ajouter de l'espace sous le titre */
+    margin-bottom: 10px;
 }
 
 #cover-header p {
-    margin-top: 5px; /* Ajouter un léger espace au-dessus du paragraphe */
+    margin-top: 5px;
 }
 
 
 
 #config-panel {
-    flex: 1 1 40%; /* Prend 40% de l'espace disponible */
+    flex: 1 1 40%;
     padding: 20px;
     position: relative;
-    max-width: 300px; /* Limite la largeur du panneau */
+    max-width: 300px;
 }
 
-#canvas-container2 img {
-    width: 100%;
-    height: auto;
-    max-width: 500px; /* Ajuste la taille maximale du logo */
-}
-
-/* Médias queries pour les ajustements en mode mobile */
 @media (max-width: 768px) {
     #main-container {
-        flex-direction: column; /* Change l'orientation en colonne */
+        flex-direction: column;
         justify-content: flex-start;
     }
 
     #config-panel {
-        width: 100%; /* Le panneau prend toute la largeur */
-        order: 1; /* Place le panneau en bas du canevas */
+        width: 100%;
+        order: 1;
     }
 
     #canvas-container2 {
-        width: 100%; /* Le canevas prend toute la largeur */
-        order: 0; /* Le canevas reste en haut */
+        width: 100%;
+        order: 0;
     }
 }
 
@@ -154,105 +159,106 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #canvas-container1 {
-    margin-bottom: 50px; /* Ajoute un espace entre les deux canvas */
+    margin-bottom: 50px;
 }
 
 .header {
     padding-bottom: 16px;
     padding-top: 16px;
     display: flex;
-    justify-content: center;  /* Centre horizontalement */
-    align-items: center;    
+    justify-content: center;
+    align-items: center;
 }
 
 .header h1 {
     text-align: center;
-    letter-spacing: 5px;  
+    letter-spacing: 5px;
 }
 
 .title-header {
     color: white;
-   position: absolute;
+    position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centre l'image */
-    z-index: 10; /* Assurez-vous que l'image soit au-dessus du canvas */ 
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.title-header img {
+    width: 256px;
+    height: auto;
 }
 
 .title-header h1 {
-    text-align: center;
+    font-size: 48px;
+    text-transform: uppercase;
 }
 
-.title-header h2 {
-    text-align: center;
-}
-
-.center-img {
-    
+.title-header span {
+    font-size: 24px;
+    text-transform: uppercase;
 }
 
 .input-range {
-    display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-
-/* INPUT RANGE CSS */
-/*********** Baseline, reset styles ***********/
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
     width: 14rem;
-  }
-  
-  /* Removes default focus */
-  input[type="range"]:focus {
+}
+
+input[type="range"]:focus {
     outline: none;
-  }
-  
-  /******** Chrome, Safari, Opera and Edge Chromium styles ********/
-  /* slider track */
-  input[type="range"]::-webkit-slider-runnable-track {
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
     background-color: #1a1a1a;
     border-radius: 2.5rem;
     height: 0.5rem;
-  }
-  
-  /* slider thumb */
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
     appearance: none;
-    margin-top: -4px; /* Centers thumb on the track */
+    margin-top: -4px;
     background-color: #000000;
     border-radius: 0.5rem;
     height: 1rem;
     width: 1rem;
-  }
-  
-  input[type="range"]:focus::-webkit-slider-thumb {
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
     outline: 3px solid #000000;
     outline-offset: 0.125rem;
-  }
-  
-  /*********** Firefox styles ***********/
-  /* slider track */
-  input[type="range"]::-moz-range-track {
+}
+
+input[type="range"]::-moz-range-track {
     background-color: #1a1a1a;
     border-radius: 2.5rem;
     height: 0.5rem;
-  }
-  
-  /* slider thumb */
-  input[type="range"]::-moz-range-thumb {
+}
+
+input[type="range"]::-moz-range-thumb {
     background-color: #000000;
-    border: none; /*Removes extra border that FF applies*/
+    border: none;
     border-radius: 0.5rem;
     height: 1rem;
     width: 1rem;
-  }
-  
-  input[type="range"]:focus::-moz-range-thumb{
+}
+
+input[type="range"]:focus::-moz-range-thumb {
     outline: 3px solid #000000;
     outline-offset: 0.125rem;
-  }
+}
