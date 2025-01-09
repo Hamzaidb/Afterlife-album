@@ -49,7 +49,7 @@ function setup() {
   }
   angleMode(DEGREES);
   
-  let colorChoice = random(["red", "green", "blue", "pink", "beige", "purple", "yellow", "orange", "grey"]);
+  let colorChoice = random(["red", "green", "blue", "beige", "purple", "yellow", "orange", "grey"]);
 
   let end = height / 2 + 500;
   for (let i = 0; i < layers; i++) {
