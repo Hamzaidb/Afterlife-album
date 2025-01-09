@@ -1,159 +1,222 @@
-let minYchange = 0;
-let maxYchange = 50;
-let layers = 8;
-let rotStripe = 0;
-let lines = true;
-let alph = 255;
-let colRand = false;  
-let filling = true;
-let colorLines = false;
-let sw = 3;
-let extraBlack = 0;
-let extraBlackAlph = 255;
-let r, g, b;
 
 
+let img;
+let currentSrc = "/assets/Afterlife_blue.jpg";
+let src2 = "/assets/Afterlife_orange_grey.jpg";
+let src3 = "/assets/Afterlife_red.jpg";
+let src4 = "/assets/Afterlife_blue.jpg";
+let src5 = "/assets/Afterlife_grey.jpg";
+let src6 = "/assets/gradient.jpg";
 
-function setup() {
-  let canvas = createCanvas(600, 600);
-  canvas.parent("canvas-container2");
+function preload() {
+    img = loadImage(currentSrc);
+}
 
-   document.getElementById('minYchange').addEventListener('input', function() {
-    minYchange = parseInt(this.value);
-    document.getElementById('minYchangeValue').textContent = minYchange;
-    redraw();
+
+function updateImage(newSrc) {
+  currentSrc = newSrc;
+  img = loadImage(currentSrc, () => {
+      console.log("Image updated to:", currentSrc);
+      init(); // Réinitialise les Wanderers
+      redrawCanvas(); // Redessine immédiatement le canvas
   });
+}
 
-  document.getElementById('maxYchange').addEventListener('input', function() {
-    maxYchange = parseInt(this.value);
-    document.getElementById('maxYchangeValue').textContent = maxYchange;
-    redraw();
-  });
-
-  document.getElementById('layers').addEventListener('input', function() {
-    layers = parseInt(this.value);
-    redraw();
-  });
-
-  document.getElementById('rotStripe').addEventListener('input', function() {
-    rotStripe = parseInt(this.value);
-    redraw();
-  });
-
-  canvas.mousePressed(setup);
-  if (lines == true) {
-    stroke(0, 0, 0, extraBlackAlph);
-    strokeWeight(sw);
-  } else {
-    noStroke();
-  }
-  angleMode(DEGREES);
-  
-  let colorChoice = random(["red", "green", "blue", "beige", "purple", "yellow", "orange", "grey"]);
-
-  let end = height / 2 + 500;
-  for (let i = 0; i < layers; i++) {
-    let y1;
-    if (i == 0) {
-      y1 = -height / 2 - 300;
-    } else {
-      y1 = -height / 2 + (height / layers) * i;
-    }
-    let y2 = y1, y3 = y1, y4 = y1, y5 = y1, y6 = y1;
-    let rotLayer = random(359);
-    let rotThisStripe = 0;
-    while (
-      (y1 < end) & 
-      (y2 < end) & 
-      (y3 < end) & 
-      (y4 < end) & 
-      (y5 < end) & 
-      (y6 < end) & 
-      (-maxYchange < minYchange)
-    ) {
-      y1 += random(minYchange, maxYchange);
-      y2 += random(minYchange, maxYchange);
-      y3 += random(minYchange, maxYchange);
-      y4 += random(minYchange, maxYchange);
-      y5 += random(minYchange, maxYchange);
-      y6 += random(minYchange, maxYchange);
-      
-      // Génération des nuances de couleur selon le choix aléatoire
-      if (colRand == false) {
-        if (colorChoice === "red") {
-          r = random(255);  // Rouge entre 0 et 255
-          g = 0;            // Vert fixe à 0
-          b = 0;            // Bleu fixe à 0
-        } else if (colorChoice === "green") {
-          r = 0;            // Rouge fixe à 0
-          g = random(255);  // Vert entre 0 et 255
-          b = 0;            // Bleu fixe à 0
-        } else if (colorChoice === "blue") {
-          r = 0;            // Rouge fixe à 0
-          g = 0;            // Vert fixe à 0
-          b = random(255);  // Bleu entre 0 et 255
-        } else if (colorChoice === "pink") {
-          r = random(255);  // Rouge entre 0 et 255
-          g = random(100);  // Vert entre 0 et 100 pour donner une teinte rose
-          b = random(255);  // Bleu entre 0 et 255 pour une nuance de rose
-        } else if (colorChoice === "beige") {
-          r = random(200, 255);  // Rouge entre 200 et 255
-          g = random(150, 220);  // Vert entre 150 et 220
-          b = random(100, 180);  // Bleu entre 100 et 180
-        } else if (colorChoice === "purple") {
-          r = random(100, 255);  // Rouge entre 100 et 255
-          g = random(0, 100);    // Vert entre 0 et 100
-          b = random(150, 255);  // Bleu entre 150 et 255
-        } else if (colorChoice === "yellow") {
-          r = random(200, 255);  // Rouge entre 200 et 255
-          g = random(200, 255);  // Vert entre 200 et 255
-          b = 0;                  // Bleu fixe à 0
-        } else if (colorChoice === "orange") {
-          r = random(200, 255);  // Rouge entre 200 et 255
-          g = random(100, 150);  // Vert entre 100 et 150
-          b = 0;                  // Bleu fixe à 0
-        } else if (colorChoice === "gray") {
-          r = random(50, 200);  // Gris moyen entre 50 et 200
-          g = r;                // Rouge et vert égaux pour un gris
-          b = r;                // Bleu égal au rouge et vert pour un gris
-        }
-      }
-      
-      
-      if (filling == true) {
-        fill(r, g, b, alph);
-      } else {
-        noFill();
-      }
-      
-      if (colorLines == true) {
-        stroke(r, g, b, alph);
-      }
-      
-      push();
-      translate(width / 2, height / 2);
-      rotThisStripe += rotStripe;
-      rotate(rotThisStripe + rotLayer);
-      let xStart = -width / 2;
-      beginShape();
-      curveVertex(xStart - 300, height / 2 + 500);
-      curveVertex(xStart - 300, y1);
-      curveVertex(xStart + (width / 5) * 1, y2);
-      curveVertex(xStart + (width / 5) * 2, y3);
-      curveVertex(xStart + (width / 5) * 3, y4);
-      curveVertex(xStart + (width / 5) * 4, y5);
-      curveVertex(width / 2 + 300, y6);
-      curveVertex(width / 2 + 300, height / 2 + 500);
-      endShape(CLOSE);
-      pop();
-    }
+function redrawCanvas() {
+  clear(); // Efface le canvas actuel
+  drawCanvasBackground(); // Redessine l'arrière-plan
+  for (let w of ws) {
+      w.render(); // Affiche les Wanderers
   }
 }
 
 
-function keyTyped() {
-    if (key === "s") {
-      saveCanvas("myCoverAfterlife", "jpg");
+
+
+class LerpVal {
+  constructor(min, max, amt, chance) {
+    this.min = min;
+    this.max = max;
+    this.val = random(min, max);
+    this.goalVal = this.val;
+    this.amt = amt;
+    this.chance = chance;
+  }
+
+  update() {
+    this.val = lerp(this.val, this.goalVal, this.amt);
+    if (random() < this.chance) this.goalVal = random(this.min, this.max);
+  }
+
+  setBounds(newMin, newMax) {
+    this.min = newMin;
+    this.max = newMax;
+    // Met également à jour l'objectif pour refléter les nouvelles bornes
+    this.goalVal = random(this.min, this.max);
+  }
+}
+
+class Rect {
+  constructor() {
+    this.x = random(img.width);
+    this.y = random(img.height);
+    this.w = new LerpVal(20, 150, 0.01, 0.05);
+    this.h = new LerpVal(20, 150, 0.01, 0.05);
+    let a = random(PI * 9);
+    this.dx = cos(a) * 0.2;
+    this.dy = sin(a) * 0.2;
+  }
+
+  update() {
+    this.x += this.dx;
+    this.y += this.dy;
+    if (this.x < this.w.val || this.x - this.w.val > img.width) this.dx *= -1;
+    if (this.y < this.h.val || this.y - this.h.val > img.height) this.dy *= -1;
+    this.w.update();
+    this.h.update();
+  }
+}
+class Wanderer {
+  constructor(w, h) {
+    this.x = random(width);
+    this.y = random(height);
+    this.w = new LerpVal(20, 100, 0.01, 0.05);
+    this.h = new LerpVal(20, 100, 0.01, 0.05);
+    this.a = new LerpVal(-PI * 2, PI * 2, 0.005, 0.01);
+    this.dh = new LerpVal(-0.01, 0.01, 0.05, 0.01);
+    this.heading = 0;
+    this.speed = 0.9;
+    this.rect = new Rect();
+  }
+
+  update() {
+    this.x += cos(this.heading) * this.speed;
+    this.y += sin(this.heading) * this.speed;
+    this.heading += this.dh.val;
+    if (this.x < 0) this.x += width;
+    if (this.x > width) this.x -= width;
+    if (this.y < 0) this.y += height;
+    if (this.y > height) this.y -= height;
+    this.a.update();
+    this.dh.update();
+    this.rect.update();
+  }
+
+  render() {
+    push();
+    translate(this.x, this.y);
+      this._drawImage();
+    
+
+    pop();
+  }
+
+  // Méthode pour dessiner l'image, appelée dans render()
+  _drawImage() {
+    let v = createVector(cos(this.heading - this.a.val), sin(this.heading - this.a.val));
+    if (v.dot(createVector(0, -1)) > 0)
+      image(
+        img,
+        -this.w.val / 2,
+        -this.h.val / 2,
+        this.w.val,
+        1,
+        this.rect.x - this.rect.w.val / 2,
+        this.rect.y - this.rect.h.val / 2,
+        this.rect.w.val,
+        1
+      );
+    if (v.dot(createVector(0, 1)) > 0)
+      image(
+        img,
+        -this.w.val / 2,
+        this.h.val / 2,
+        this.w.val,
+        1,
+        this.rect.x + this.rect.w.val / 2,
+        this.rect.y - this.rect.h.val / 2,
+        this.rect.w.val,
+        1
+      );
+  }
+}
+
+
+let ws;
+let isAnimating = true; // Contrôle de l'état d'animation
+let stopTimeout; // Variable pour stocker le timeout
+
+let currentBackgroundBrightness = 0; 
+
+
+function setup() {
+  let canvas = createCanvas(600, 600); // Définit la taille du canvas
+  canvas.parent("canvas-container2"); // Associe ce canvas à l'élément HTML avec l'ID canvas-container2
+  pixelDensity(1);
+  colorMode(HSB, 1, 1, 1);
+  init();
+  startAnimation();
+  drawCanvasBackground(); 
+  img = loadImage(currentSrc, () => {
+      console.log("Initial image loaded:", currentSrc);
+      init(); // Initialise les Wanderers
+      startAnimation(); // Démarre l'animation
+      drawCanvasBackground();
+  });
+}
+
+function drawCanvasBackground() {
+  background(0, 0, currentBackgroundBrightness); // Fond basé sur la luminosité
+}
+
+function init() {
+  ws = [];
+  for (let i = 0; i < 15; i++) {
+    ws.push(new Wanderer());
+  }
+  background(0);
+}
+
+
+
+function draw() {
+  if (!isAnimating) return; // Ne dessine plus si l'animation est arrêtée
+
+  for (let i = 0; i < 10; i++) {
+    for (let w of ws) {
+      w.update();
+      w.render();
     }
   }
-  
+}
+
+function startAnimation() {
+  isAnimating = true;
+
+  // Si un timeout précédent existe, on le supprime
+  if (stopTimeout) clearTimeout(stopTimeout);
+
+  // Arrêter l'animation après 5 secondes
+  stopTimeout = setTimeout(() => {
+    isAnimating = false;
+    console.log("Animation stoppée après 5 secondes.");
+  }, 6000);
+}
+
+// Lorsqu'on clique, redémarre l'animation
+function mousePressed() {
+  if (!isAnimating) {
+    init(); // Réinitialise les wanderers
+    startAnimation(); // Redémarre l'animation avec un nouveau timeout
+    console.log("Animation redémarrée.");
+  }
+}
+
+//document.getElementById("btn1").addEventListener("click", () => updateImage(currentSrc));
+document.getElementById("btn2").addEventListener("click", () => updateImage(src2));
+document.getElementById("btn3").addEventListener("click", () => updateImage(src3));
+document.getElementById("btn4").addEventListener("click", () => updateImage(src5));
+document.getElementById("btn1").addEventListener("click", () => updateImage(src4));
+document.getElementById("btn5").addEventListener("click", () => updateImage(src6));
+
+
