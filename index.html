@@ -1,149 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>header</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <title>Afterlife - Timeless</title>
     <link rel="stylesheet" href="style/tracklist.css" type="text/css">
     <link rel="stylesheet" href="style/artists.css" type="text/css">
-    <link href="style/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style/style.css" type="text/css" />
     <link rel="stylesheet" href="style/tracklist.css" type="text/css">
     <link rel="stylesheet" href="style/artists.css" type="text/css">
-    <script src="./script/header-animation.js" defer></script>
+    <link rel="icon" type="image/png" href="assets/afterlife_logo.png">
 </head>
-<body>
-    <section>
-        <div>
-            <h1>AFTERLIFE</h1>
-        </div>
-    </section>
-    <div class="title-header">
-        <h1>NEW ALBUM</h1>
-        <h2>AFTERLIFE - 2025</h2>
-        <img src="assets/afterlife_logo.png" class="center-img">
-    </div>
-    <section>
-        <div id="canvas-container1">
-            <canvas id="canvas-header"></canvas>
-        </div>
-    </section>
 
-    <section class="section_tracklist">
-        <div class="vinyle">
-            <img src="assets/vinyle.png" id="vinyle-img" draggable="false">
-            <div class="turnText">
-                <span>Turn to<br>discover tracks</span>
-                <img src="assets/arrow.svg">
-            </div>
+<body>
+    <header>
+        <h1>Afterlife</h1>
+    </header>
+    <main>
+        <div class="title-header">
+            <h1>Timeless</h1>
+            <span>Afterlife - 2025</span>
+            <img src="assets/afterlife_logo.png">
         </div>
-        <div class="track-viewer">
-            <div>
-                <h2 id="track-title"></h2>
-                <div class="track-info">
-                    <span id="track-time"></span>
-                    <span id="track-style"></span>
-                    <span id="track-artist"></span>
+        <section>
+            <div id="canvas-container1">
+                <canvas id="canvas-header"></canvas>
+            </div>
+        </section>
+        <section class="section_tracklist">
+            <div class="vinyle">
+                <img src="assets/vinyle.png" id="vinyle-img" draggable="false">
+                <div class="turnText">
+                    <span>Turn to<br>discover tracks</span>
+                    <img src="assets/arrow.svg">
                 </div>
-                <div class="viewer">
-                    <div class="cover-viewer">
-                        <canvas id="visualizer" class="visualizer"></canvas>
-                        <div class="audio-player">
-                            <button class="play-btn"></button>
-                            <div class="bars">
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
-                                <div class="bar"></div>
+            </div>
+            <div class="track-viewer">
+                <div>
+                    <h2 id="track-title"></h2>
+                    <div class="track-info">
+                        <span id="track-time"></span>
+                        <span id="track-style"></span>
+                        <span id="track-artist"></span>
+                    </div>
+                    <div class="viewer">
+                        <div class="cover-viewer">
+                            <canvas id="visualizer" class="visualizer"></canvas>
+                            <div class="audio-player">
+                                <button class="play-btn"></button>
+                                <div class="bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="timer">0:00</div>
                             </div>
-                            <div class="timer">0:00</div>
                         </div>
                     </div>
                 </div>
+                <img src="assets/star.svg">
             </div>
-            <img src="assets/star.svg">
-        </div>
-        <audio id="audio" src="music/Eternity.mp3"></audio>
-    </section>
-    <section class="section_artists">
-        <h2>The artists</h2>
-        <div class="artists-container">
-            <div class="slider slider-right">
-                <img src="assets/cassian.webp" alt="Cassian">
-                <img src="assets/olympe.jpg" alt="Olympe">
-                <img src="assets/kevindevries.jpg" alt="Kevin de Vries">
-                <img src="assets/charlotte.jpg" alt="Charlotte">
-                <img src="assets/anyma.webp" alt="anyma">
-                <img src="assets/clara.png" alt="clara">
-                <img src="assets/argy.jpg" alt="argy">
-                <img src="assets/amelie.jpg" alt="amelie">
+            <audio id="audio" src="music/Eternity.mp3"></audio>
+        </section>
+        <section class="section_artists">
+            <h2>The artists</h2>
+            <div class="artists-container">
+                <div class="slider slider-right">
+                    <img src="assets/cassian.webp" alt="Cassian">
+                    <img src="assets/olympe.jpg" alt="Olympe">
+                    <img src="assets/kevindevries.jpg" alt="Kevin de Vries">
+                    <img src="assets/charlotte.jpg" alt="Charlotte">
+                    <img src="assets/anyma.webp" alt="anyma">
+                    <img src="assets/clara.png" alt="clara">
+                    <img src="assets/argy.jpg" alt="argy">
+                    <img src="assets/amelie.jpg" alt="amelie">
+                </div>
+                <div class="slider slider-left">
+                    <img src="assets/amelie.jpg" alt="amelie">
+                    <img src="assets/argy.jpg" alt="argy">
+                    <img src="assets/clara.png" alt="clara">
+                    <img src="assets/anyma.webp" alt="anyma">
+                    <img src="assets/charlotte.jpg" alt="Charlotte">
+                    <img src="assets/kevindevries.jpg" alt="Kevin de Vries">
+                    <img src="assets/olympe.jpg" alt="Olympe">
+                    <img src="assets/cassian.webp" alt="Cassian">
+                </div>
             </div>
-            <div class="slider slider-left">
-                <img src="assets/amelie.jpg" alt="amelie">
-                <img src="assets/argy.jpg" alt="argy">
-                <img src="assets/clara.png" alt="clara">
-                <img src="assets/anyma.webp" alt="anyma">
-                <img src="assets/charlotte.jpg" alt="Charlotte">
-                <img src="assets/kevindevries.jpg" alt="Kevin de Vries">
-                <img src="assets/olympe.jpg" alt="Olympe">
-                <img src="assets/cassian.webp" alt="Cassian">
+        </section>
+        <div id="cover-header">
+            <h1>COVER</h1>
+            <p>Click on the picture to generate!</p>
+        </div>
+
+        <div id="main-container">
+
+            <div id="canvas-container2">
+                <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
+            </div>
+
+            <div id="config-panel">
+                <label for="minYchange">Min Y Change: </label>
+                <input type="range" id="minYchange" min="0" max="100" step="1" value="0">
+                <span id="minYchangeValue">0</span><br>
+
+                <label for="maxYchange">Max Y Change: </label>
+                <input type="range" id="maxYchange" min="0" max="100" step="1" value="50">
+                <span id="maxYchangeValue">50</span><br>
+
+                <label for="layers">Layers: </label>
+                <input type="number" id="layers" min="1" max="20" value="8"><br>
+
+                <label for="rotStripe">Rotation : </label>
+                <input type="range" id="rotStripe" min="0" max="10" step="1" value="0"><br>
             </div>
         </div>
-    </section>
-    <div id="cover-header">
-        <h1>COVER</h1>
-        <p>Click on the picture to generate!</p>
-    </div>
-
-    <div id="main-container">
-
-        <div id="canvas-container2">
-            <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
-        </div>
-
-        <div id="config-panel">
-            <label for="minYchange">Min Y Change: </label>
-            <input type="range" id="minYchange" min="0" max="100" step="1" value="0">
-            <span id="minYchangeValue">0</span><br>
-
-            <label for="maxYchange">Max Y Change: </label>
-            <input type="range" id="maxYchange" min="0" max="100" step="1" value="50">
-            <span id="maxYchangeValue">50</span><br>
-
-            <label for="layers">Layers: </label>
-            <input type="number" id="layers" min="1" max="20" value="8"><br>
-
-            <label for="rotStripe">Rotation : </label>
-            <input type="range" id="rotStripe" min="0" max="10" step="1" value="0"><br>
-        </div>
-    </div>
-
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script/artists.js"></script>
-
-    <script src="./script/cover.js"></script>
+    <script src="script/cover.js"></script>
     <script src="script/musicPlayer.js"></script>
     <script src="script/selectTrack.js"></script>
     <script src="script/visualizer.js"></script>
     <script src="script/header-animation.js"></script>
+    <script src="script/header-animation.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 </body>
-
 </html>
