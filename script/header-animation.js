@@ -1,5 +1,5 @@
 window.onload = function(){
-    const canvas = document.getElementById('canvas1');
+    const canvas = document.getElementById('canvas-header');
     const ctx = canvas.getContext('2d');
     
     canvas.width = window.innerWidth;
@@ -44,21 +44,22 @@ class FlowFieldEffect {
         this.timer = 0;
         this.lastTime = 0;
     }
-    #createGradient(){
-        this.gradient = this.#ctx.createLinearGradient(0, 0,this.#width, this.#height);
-        this.gradient.addColorStop("0.1","#ff5c33");
-        this.gradient.addColorStop("0.2", "#ff66b3");
-        this.gradient.addColorStop("0.4", "#ccccff");
-        this.gradient.addColorStop("0.6", "#b3ffff");
-        this.gradient.addColorStop("0.8", "#80ff80");
-        this.gradient.addColorStop("0.9", "#ffff33");
+  
+    #createGradient() {
+        this.gradient = this.#ctx.createLinearGradient(0, 0, this.#width, this.#height);
+        this.gradient.addColorStop("0.1", "rgb(20, 20, 20)");   // Gris très foncé
+        this.gradient.addColorStop("0.3", "rgb(80, 80, 80)");   // Gris foncé
+        this.gradient.addColorStop("0.5", "rgb(150, 150, 150)"); // Gris moyen
+        this.gradient.addColorStop("0.7", "rgb(200, 200, 200)"); // Gris clair
+        this.gradient.addColorStop("0.9", "rgb(240, 240, 240)"); // Presque blanc
     }
+    
     #mapField(timeStamp){
         let deltaTime = timeStamp - this.lastTime;
         this.lastTime = timeStamp;
 
         if (this.timer > this.interval){
-            this.#ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Couleur noire semi-transparente
+            this.#ctx.fillStyle = 'rgba(10, 10, 10, 0.1)'; // Gris très foncé semi-transparent
 
             this.#ctx.clearRect(0,0,this.#width, this.#height);
             

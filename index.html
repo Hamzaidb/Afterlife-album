@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <link rel="stylesheet" href="style/tracklist.css" type="text/css">
+    <link rel="stylesheet" href="style/artists.css" type="text/css">
     <link href="style/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/tracklist.css" type="text/css">
     <link rel="stylesheet" href="style/artists.css" type="text/css">
+    <script src="./script/header-animation.js" defer></script>
 </head>
-
 <body>
     <section>
-        <div class="header flex justify-center">
+        <div>
             <h1>AFTERLIFE</h1>
         </div>
     </section>
@@ -21,7 +23,11 @@
         <h2>AFTERLIFE - 2025</h2>
         <img src="assets/afterlife_logo.png" class="center-img">
     </div>
-    <canvas id="canvas1"></canvas>
+    <section>
+        <div id="canvas-container1">
+            <canvas id="canvas-header"></canvas>
+        </div>
+    </section>
 
     <section class="section_tracklist">
         <div class="vinyle">
@@ -100,12 +106,40 @@
             </div>
         </div>
     </section>
+    <div id="cover-header">
+        <h1>COVER</h1>
+        <p>Click on the picture to generate!</p>
+    </div>
+
+    <div id="main-container">
+
+        <div id="canvas-container2">
+            <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
+        </div>
+
+        <div id="config-panel">
+            <label for="minYchange">Min Y Change: </label>
+            <input type="range" id="minYchange" min="0" max="100" step="1" value="0">
+            <span id="minYchangeValue">0</span><br>
+
+            <label for="maxYchange">Max Y Change: </label>
+            <input type="range" id="maxYchange" min="0" max="100" step="1" value="50">
+            <span id="maxYchangeValue">50</span><br>
+
+            <label for="layers">Layers: </label>
+            <input type="number" id="layers" min="1" max="20" value="8"><br>
+
+            <label for="rotStripe">Rotation : </label>
+            <input type="range" id="rotStripe" min="0" max="10" step="1" value="0"><br>
+        </div>
+    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script/artists.js"></script>
 
+    <script src="./script/cover.js"></script>
     <script src="script/musicPlayer.js"></script>
     <script src="script/selectTrack.js"></script>
     <script src="script/visualizer.js"></script>
