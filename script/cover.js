@@ -1,5 +1,3 @@
-
-
 let img;
 let currentSrc = "/assets/Afterlife_blue.jpg";
 let src2 = "/assets/Afterlife_orange_grey.jpg";
@@ -7,6 +5,9 @@ let src3 = "/assets/Afterlife_red.jpg";
 let src4 = "/assets/Afterlife_blue.jpg";
 let src5 = "/assets/Afterlife_grey.jpg";
 let src6 = "/assets/Afterlife_red_white.jpg";
+let src7 = "/assets/Afterlife_doree.jpg";
+let src8 = "/assets/Afterlife_white.jpg";
+
 
 function preload() {
     img = loadImage(currentSrc);
@@ -200,7 +201,7 @@ function startAnimation() {
   stopTimeout = setTimeout(() => {
     isAnimating = false;
     console.log("Animation stoppée après 5 secondes.");
-  }, 6000);
+  }, 7000);
 }
 
 // Lorsqu'on clique, redémarre l'animation
@@ -218,5 +219,8 @@ document.getElementById("btn3").addEventListener("click", () => updateImage(src3
 document.getElementById("btn4").addEventListener("click", () => updateImage(src5));
 document.getElementById("btn1").addEventListener("click", () => updateImage(src4));
 document.getElementById("btn5").addEventListener("click", () => updateImage(src6));
+document.getElementById("btn6").addEventListener("click", () => updateImage(src7));
+document.getElementById("btn7").addEventListener("click", () => updateImage(src8));
+
 
 
