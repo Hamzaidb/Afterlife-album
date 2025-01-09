@@ -107,39 +107,45 @@
         </section>
         <div id="cover-header">
             <h1>COVER</h1>
-            <p>Click on the picture to generate!</p>
         </div>
-
         <div id="main-container">
-
             <div id="canvas-container2">
                 <img src="assets/afterlife_logo.png" id="logo" alt="Afterlife Logo">
             </div>
-        <div id="config-panel">
+            <div id="config-panel">
 
-            <div class="button-container">
-                <h3>Texture:</h3>
-                <div class="button-list">
-                  <button id="btn1">
-                    <img src="assets/blue.jpg" alt="Blue Thumbnail" class="thumbnail">
-                  </button>
-                  <button id="btn2">
-                    <img src="assets/orange.jpg" alt="Orange Grey Thumbnail" class="thumbnail">
-                  </button>
-                  <button id="btn3">
-                    <img src="assets/red.jpg" alt="Red Thumbnail" class="thumbnail">
-                  </button>
-                  <button id="btn4">
-                    <img src="assets/grey.jpg" alt="Grey Thumbnail" class="thumbnail">
-                  </button>
-                  <button id="btn5">
-                    <img src="assets/red_white.jpg" alt="Red white Thumbnail" class="thumbnail">
-                  </button>
-                  <button id="btn6">
-                    <img src="assets/doree.jpg" alt="Doree Thumbnail" class="thumbnail">
-                  </button>
+                <div class="button-container">
+                    <h3>Texture:</h3>
+                    <div class="button-list">
+                        <button id="btn1">
+                            <img src="assets/blue.jpg" alt="Blue Thumbnail" class="thumbnail">
+                        </button>
+                        <button id="btn2">
+                            <img src="assets/orange.jpg" alt="Orange Grey Thumbnail" class="thumbnail">
+                        </button>
+                        <button id="btn3">
+                            <img src="assets/red.jpg" alt="Red Thumbnail" class="thumbnail">
+                        </button>
+                        <button id="btn4">
+                            <img src="assets/grey.jpg" alt="Grey Thumbnail" class="thumbnail">
+                        </button>
+                        <button id="btn5">
+                            <img src="assets/red_white.jpg" alt="Red white Thumbnail" class="thumbnail">
+                        </button>
+                        <button id="btn6">
+                            <img src="assets/doree.jpg" alt="Doree Thumbnail" class="thumbnail">
+                        </button>
+                    </div>
                 </div>
-          </div>
+                <div class="duration-control">
+                    <h3>Durée de génération:</h3>
+                    <div class="slider-container">
+                        <input type="range" id="duration-slider" 
+                               min="1" max="15" value="5" step="1">
+                        <span id="duration-value">5s</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -154,4 +160,5 @@
     <script src="script/header-animation.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 </body>
+
 </html>
